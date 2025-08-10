@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Добавить Minecraft-сервер</h2>
+    <form method="POST">
+        <label>IP: <input type="text" name="ip" required></label><br>
+        <label>Порт (по умолчанию 25565): <input type="number" name="port"></label><br>
+        <input type="submit" value="Добавить">
+    </form>
+{% endblock %}
