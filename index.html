@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Список серверов</h2>
+    {% if servers %}
+        <table>
+            <tr>
+                <th>IP:Port</th>
+                <th>Статус</th>
+                <th>Игроки</th>
+                <th>Версия</th>
+                <th>Добавил</th>
+            </tr>
+            {% for server in servers %}
+                <tr>
+                    <td>{{ server.ip }}:{{ server.port }}</td>
+                    <td>{% if server.online %}Онлайн{% else %}Оффлайн{% endif %}</td>
+                    <td>{% if server.online %}{{ server.players }} / {{ server.max_players }}{% else %}N/A{% endif %}</td>
+                    <td>{% if server.online %}{{ server.version }}{% else %}N/A{% endif %}</td>
+                    <td>{{ server.added_by }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Нет серверов. Добавьте свой!</p>
+    {% endif %}
+{% endblock %}
